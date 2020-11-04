@@ -83,6 +83,14 @@ class PublicKey {
         util.throw(400, 'Provided email address does not match a valid user ID of the key');
       }
     }
+
+    const last = array => array[array.length - 1];
+    const domainNames = key.userIds.map(userId => last(userId.split('@')));
+    // if no UID email address is in the domain, an error will be thrown
+    if (!domainNames.some(domainName => config.publicKey.domainNames.includes(domainName))) {
+      util.throw(403, 'You are not allowed to add your key');
+    }
+
     // check for existing verified key with same id
     const verified = await this.getVerified({keyId: key.keyId});
     if (verified) {
