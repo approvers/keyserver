@@ -86,7 +86,7 @@ class PublicKey {
 
     const last = array => array[array.length - 1];
     const domainNames = key.userIds.map(userId => last(userId.split('@')));
-    // if all email addresses are not in the domain, an error will be thrown
+    // if no email addresses are in the domain, an error will be thrown
     if (!domainNames.some(domainName => config.publicKey.domainNames.includes(domainName))) {
       util.throw(403, 'You are not allowed to add your key');
     }
