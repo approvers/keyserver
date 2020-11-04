@@ -41,7 +41,8 @@ module.exports = {
   },
 
   publicKey: {
-    purgeTimeInDays: process.env.PUBLIC_KEY_PURGE_TIME || 30
+    purgeTimeInDays: process.env.PUBLIC_KEY_PURGE_TIME || 30,
+    domainNames: process.env.PUBLIC_KEY_DOMAIN_NAMES.split(';'),
   }
 
 };
