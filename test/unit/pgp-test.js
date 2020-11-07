@@ -89,7 +89,7 @@ describe('PGP Unit Tests', () => {
       return expect(pgp.parseKey(key3Armored)).to.eventually.be.rejectedWith(/only v4 keys/);
     });
 
-    it.skip('should only accept valid user ids', () => {
+    it('should only accept valid user ids', () => {
       sandbox.stub(pgp, 'parseUserIds').returns([]);
       return expect(pgp.parseKey(key3Armored)).to.eventually.be.rejectedWith(/invalid user IDs/);
     });
@@ -120,7 +120,7 @@ describe('PGP Unit Tests', () => {
       expect(params.publicKeyArmored).to.equal(pgp.trimKey(key2Armored));
     });
 
-    it.skip('should be able to parse komplex key', async () => {
+    it('should be able to parse komplex key', async () => {
       const params = await pgp.parseKey(key3Armored);
       expect(params.keyId).to.equal('4001a127a90de8e1');
       expect(params.fingerprint).to.equal('04062c70b446e33016e219a74001a127a90de8e1');

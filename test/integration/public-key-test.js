@@ -9,7 +9,7 @@ const PGP = require('../../src/service/pgp');
 const PublicKey = require('../../src/service/public-key');
 const templates = require('../../src/email/templates');
 
-describe.skip('Public Key Integration Tests', function() {
+describe('Public Key Integration Tests', function() {
   this.timeout(20000);
 
   const sandbox = sinon.createSandbox();
